@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_sample/theme.dart';
 
 void main() => runApp(new MyApp());
 
@@ -99,7 +100,39 @@ class _MyHomePageState extends State<MyHomePage> {
           ],
         ),
       ),
+      bottomNavigationBar: new Theme(
+        data: Theme.of(context).copyWith(
+        canvasColor: themeData.primaryColor,
+        primaryColor: themeData.accentColor,
+        textTheme: Theme
+            .of(context)
+            .textTheme
+            .copyWith(caption: new TextStyle(color: Colors.white))),
+        child: new BottomNavigationBar(
+          currentIndex: 0,
+          type: BottomNavigationBarType.fixed,
+          items: [
+            new BottomNavigationBarItem(
+              icon: new Image.asset('assets/ic_home_24.png', color: themeData.accentColor, height: 32),
+              title: new Text("ホーム")
+            ),
+            new BottomNavigationBarItem(
+                icon: new Image.asset('assets/ic_bookstand_24.png', height: 32),
+                title: new Text("本棚")
+            ),
+            new BottomNavigationBarItem(
+                icon: new Image.asset('assets/ic_graph_24.png', height: 32),
+                title: new Text("読書グラフ")
+            ),
+            new BottomNavigationBarItem(
+                icon: new Image.asset('assets/ic_setting_24.png', height: 32),
+                title: new Text("設定")
+            )
+          ]
+        )
+      ),
       floatingActionButton: new FloatingActionButton(
+        backgroundColor: themeData.accentColor,
         onPressed: _incrementCounter,
         // tooltip: 'Increment',
         child: new Icon(Icons.add),
