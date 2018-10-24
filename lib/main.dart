@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_sample/home.dart';
 import 'package:flutter_sample/theme.dart';
 
 void main() => runApp(new MyApp());
@@ -20,13 +21,13 @@ class MyApp extends StatelessWidget {
         // counter didn't reset back to zero; the application is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: new MyHomePage(title: 'Flutter Demo Home Page'),
+      home: new MyHomePage(),
     );
   }
 }
 
 class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
+  MyHomePage({Key key}) : super(key: key);
 
   // This widget is the home page of your application. It is stateful, meaning
   // that it has a State object (defined below) that contains fields that affect
@@ -37,24 +38,35 @@ class MyHomePage extends StatefulWidget {
   // used by the build method of the State. Fields in a Widget subclass are
   // always marked "final".
 
-  final String title;
-
   @override
   _MyHomePageState createState() => new _MyHomePageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
+enum Page {
+  home,
+  bookstand,
+  graph,
+  setting
+}
 
-  void _incrementCounter() {
-    setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
-      _counter++;
-    });
+class _MyHomePageState extends State<MyHomePage> {
+
+  PageController _pageController;
+  int _page = 0;
+
+  @override
+  void initState() {
+    super.initState();
+    _pageController = new PageController(
+      initialPage: _page,
+      keepPage: true
+    );
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    _pageController.dispose();
   }
 
   @override
@@ -69,36 +81,22 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: new AppBar(
         // Here we take the value from the MyHomePage object that was created by
         // the App.build method, and use it to set our appbar title.
-        title: new Text(widget.title),
+        title: new Text("Bookstand"),
+        backgroundColor: themeData.primaryColor,
       ),
-      body: new Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
-        child: new Column(
-          // Column is also layout widget. It takes a list of children and
-          // arranges them vertically. By default, it sizes itself to fit its
-          // children horizontally, and tries to be as tall as its parent.
-          //
-          // Invoke "debug paint" (press "p" in the console where you ran
-          // "flutter run", or select "Toggle Debug Paint" from the Flutter tool
-          // window in IntelliJ) to see the wireframe for each widget.
-          //
-          // Column has various properties to control how it sizes itself and
-          // how it positions its children. Here we use mainAxisAlignment to
-          // center the children vertically; the main axis here is the vertical
-          // axis because Columns are vertical (the cross axis would be
-          // horizontal).
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            new Text(
-              'You have pushed the button this many times:',
-            ),
-            new Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.display1,
-            ),
-          ],
-        ),
+      body: new PageView(
+        controller: _pageController,
+        onPageChanged: (int page) {
+          setState(() {
+            this._page = page;
+          });
+        },
+        children: <Widget>[
+          new HomePage(),
+          new HomePage(),
+          new HomePage(),
+          new HomePage(),
+        ],
       ),
       bottomNavigationBar: new Theme(
         data: Theme.of(context).copyWith(
@@ -109,23 +107,28 @@ class _MyHomePageState extends State<MyHomePage> {
             .textTheme
             .copyWith(caption: new TextStyle(color: Colors.white))),
         child: new BottomNavigationBar(
-          currentIndex: 0,
+          currentIndex: _page,
           type: BottomNavigationBarType.fixed,
+          onTap: (int page) {
+            this._pageController.animateToPage(page, 
+                      curve: Curves.ease, 
+                      duration: const Duration(milliseconds: 300));
+          },
           items: [
             new BottomNavigationBarItem(
-              icon: new Image.asset('assets/ic_home_24.png', color: themeData.accentColor, height: 32),
+              icon: new Image.asset('assets/ic_home_24.png', color: _page == Page.home.index ? themeData.accentColor : Colors.white, height: 32),
               title: new Text("ホーム")
             ),
             new BottomNavigationBarItem(
-                icon: new Image.asset('assets/ic_bookstand_24.png', height: 32),
+                icon: new Image.asset('assets/ic_bookstand_24.png', color: _page == Page.bookstand.index ? themeData.accentColor : Colors.white, height: 32),
                 title: new Text("本棚")
             ),
             new BottomNavigationBarItem(
-                icon: new Image.asset('assets/ic_graph_24.png', height: 32),
+                icon: new Image.asset('assets/ic_graph_24.png', color: _page == Page.graph.index ? themeData.accentColor : Colors.white, height: 32),
                 title: new Text("読書グラフ")
             ),
             new BottomNavigationBarItem(
-                icon: new Image.asset('assets/ic_setting_24.png', height: 32),
+                icon: new Image.asset('assets/ic_setting_24.png', color: _page == Page.setting.index ? themeData.accentColor : Colors.white, height: 32),
                 title: new Text("設定")
             )
           ]
@@ -133,7 +136,9 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       floatingActionButton: new FloatingActionButton(
         backgroundColor: themeData.accentColor,
-        onPressed: _incrementCounter,
+        onPressed: () {
+
+        },
         // tooltip: 'Increment',
         child: new Icon(Icons.add),
       ), // This trailing comma makes auto-formatting nicer for build methods.
