@@ -54,6 +54,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   PageController _pageController;
   int _page = 0;
+  bool _shouldShowFAB = true;
 
   @override
   void initState() {
@@ -90,6 +91,7 @@ class _MyHomePageState extends State<MyHomePage> {
         controller: _pageController,
         onPageChanged: (int page) {
           setState(() {
+            this._shouldShowFAB = page == Page.home.index;
             this._page = page;
           });
         },
@@ -136,14 +138,14 @@ class _MyHomePageState extends State<MyHomePage> {
           ]
         )
       ),
-      floatingActionButton: new FloatingActionButton(
+      floatingActionButton: _shouldShowFAB ? FloatingActionButton(
         backgroundColor: themeData.accentColor,
         onPressed: () {
 
         },
         // tooltip: 'Increment',
         child: new Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
+      ) : null, // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }
