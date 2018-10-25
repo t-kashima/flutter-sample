@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_sample/theme.dart';
 
 class HomePage extends StatefulWidget {
   HomePage({Key key, this.title}) : super(key: key);
@@ -25,10 +26,17 @@ class _HomePageState extends State<HomePage> {
     return new Scaffold(
       body: new Center(
         child: new Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[
-            new Text(
-              'Home',
+            new Container(
+              padding: const EdgeInsets.only(top: 20.0),
+              child: new Text(
+                'あなたにおすすめの本',
+                style: new TextStyle(
+                  color: themeData.primaryColor,
+                  fontSize: 18.0
+                ),
+              ),
             ),
           ],
         ),

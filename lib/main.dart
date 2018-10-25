@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_sample/bookshelf.dart';
 import 'package:flutter_sample/home.dart';
 import 'package:flutter_sample/theme.dart';
 
@@ -81,6 +82,7 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: new AppBar(
         // Here we take the value from the MyHomePage object that was created by
         // the App.build method, and use it to set our appbar title.
+        centerTitle: true,
         title: new Image.asset('assets/logo.png'),
         backgroundColor: themeData.primaryColor,
       ),
@@ -93,7 +95,7 @@ class _MyHomePageState extends State<MyHomePage> {
         },
         children: <Widget>[
           new HomePage(),
-          new HomePage(),
+          new BookshelfPage(),
           new HomePage(),
           new HomePage(),
         ],

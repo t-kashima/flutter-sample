@@ -7,6 +7,7 @@ final ThemeData themeData = new ThemeData(
     dividerColor: Colors.grey[300],
     backgroundColor: Colors.grey[100],
     primaryColor: _MyColors.theme[500],
+    primaryColorDark: _MyColors.theme[600],
     primaryColorBrightness: Brightness.light,
     secondaryHeaderColor: Colors.white,
     accentColor: _MyColors.accent[500],
@@ -18,6 +19,7 @@ class _MyColors {
   _MyColors._(); // this basically makes it so you can instantiate this class
 
   static const Map<int, Color> theme = const <int, Color>{
+    600: const Color(0xFF211A16),
     500: const Color(0xFF54473F)
   };
 
