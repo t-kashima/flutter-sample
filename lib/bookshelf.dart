@@ -23,37 +23,24 @@ class _BookshelfPageState extends State<BookshelfPage> {
 
   @override
   Widget build(BuildContext context) {
-    return DefaultTabController(
-        length: 3,
-        child: Scaffold(
-          appBar: new AppBar(
-            backgroundColor: themeData.primaryColorDark,
-            flexibleSpace: new Column(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                new TabBar(
-                  indicatorColor: Colors.white,
-                  indicatorWeight: 5.0,
-                  labelStyle: TextStyle(fontSize: 16.0),
-                  labelColor: themeData.accentColor,
-                  unselectedLabelColor: Colors.white,
-                  tabs: [
-                    Tab(text: "読みたい"),
-                    Tab(text: "読書中"),
-                    Tab(text: "読了"),
-                  ],
+    return new Scaffold(
+      body: new Center(
+        child: new Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: <Widget>[
+            new Container(
+              padding: const EdgeInsets.only(top: 20.0),
+              child: new Text(
+                '読みたい本',
+                style: new TextStyle(
+                  color: themeData.primaryColor,
+                  fontSize: 18.0
                 ),
-              ],
+              ),
             ),
-         ),
-          body: TabBarView(
-            children: [
-              Icon(Icons.directions_car),
-              Icon(Icons.directions_transit),
-              Icon(Icons.directions_bike),
-            ],
-          ),
+          ],
         ),
-      );
+      ),// This trailing comma makes auto-formatting nicer for build methods.
+    );
   }
 }

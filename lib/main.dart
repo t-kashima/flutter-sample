@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_sample/bookshelf.dart';
+import 'package:flutter_sample/bookshelf_pager.dart';
 import 'package:flutter_sample/home.dart';
 import 'package:flutter_sample/theme.dart';
+import 'package:flutter_sample/ui/select_bookshelf_container.dart';
 
 void main() => runApp(new MyApp());
 
@@ -45,7 +46,7 @@ class MyHomePage extends StatefulWidget {
 
 enum Page {
   home,
-  bookstand,
+  bookshelf,
   graph,
   setting
 }
@@ -55,6 +56,7 @@ class _MyHomePageState extends State<MyHomePage> {
   PageController _pageController;
   int _page = 0;
   bool _shouldShowFAB = true;
+  bool _shouldShowSelectBookshelf = false;
 
   @override
   void initState() {
@@ -84,7 +86,7 @@ class _MyHomePageState extends State<MyHomePage> {
         // Here we take the value from the MyHomePage object that was created by
         // the App.build method, and use it to set our appbar title.
         centerTitle: true,
-        title: new Image.asset('assets/logo.png'),
+        title: _shouldShowSelectBookshelf ? new SelectBookshelfContainer() : new Image.asset('assets/logo.png'),
         backgroundColor: themeData.primaryColor,
       ),
       body: new PageView(
@@ -92,12 +94,13 @@ class _MyHomePageState extends State<MyHomePage> {
         onPageChanged: (int page) {
           setState(() {
             this._shouldShowFAB = page == Page.home.index;
+            this._shouldShowSelectBookshelf = page == Page.bookshelf.index;
             this._page = page;
           });
         },
         children: <Widget>[
           new HomePage(),
-          new BookshelfPage(),
+          new BookshelfPager(),
           new HomePage(),
           new HomePage(),
         ],
@@ -124,7 +127,7 @@ class _MyHomePageState extends State<MyHomePage> {
               title: new Text("ホーム")
             ),
             new BottomNavigationBarItem(
-                icon: new Image.asset('assets/ic_bookstand_24.png', color: _page == Page.bookstand.index ? themeData.accentColor : Colors.white, height: 32),
+                icon: new Image.asset('assets/ic_bookstand_24.png', color: _page == Page.bookshelf.index ? themeData.accentColor : Colors.white, height: 32),
                 title: new Text("本棚")
             ),
             new BottomNavigationBarItem(
