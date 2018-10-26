@@ -90,6 +90,7 @@ class _MyHomePageState extends State<MyHomePage> {
         backgroundColor: themeData.primaryColor,
       ),
       body: new PageView(
+        physics: new NeverScrollableScrollPhysics(),
         controller: _pageController,
         onPageChanged: (int page) {
           setState(() {
@@ -117,9 +118,7 @@ class _MyHomePageState extends State<MyHomePage> {
           currentIndex: _page,
           type: BottomNavigationBarType.fixed,
           onTap: (int page) {
-            this._pageController.animateToPage(page, 
-                      curve: Curves.ease, 
-                      duration: const Duration(milliseconds: 300));
+            this._pageController.jumpToPage(page);
           },
           items: [
             new BottomNavigationBarItem(
