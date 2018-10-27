@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_sample/api/bookstand_api_impl.dart';
+import 'package:flutter_sample/model/home.dart';
 import 'package:flutter_sample/repository/home_repository_impl.dart';
 import 'package:flutter_sample/theme.dart';
+import 'package:flutter_sample/ui/book_image.dart';
 
 class HomePage extends StatefulWidget {
   HomePage({Key key, this.title}) : super(key: key);
@@ -23,6 +25,8 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
 
+  Home _home = new Home([]);
+
   @override
   void initState() {
     super.initState();
@@ -33,31 +37,47 @@ class _HomePageState extends State<HomePage> {
   Future<Null> _fetch() async {
     var homeRepository = new HomeRepositoryImpl(new BookstandApiImpl());
     var home = await homeRepository.findAll();
-    home.recommendBooks.forEach((f) {
-      debugPrint(f.imageUrl);
-    });
+
+    try {
+      setState(() {
+        this._home = home;
+      });
+    } catch(e) {
+      // You can't set the state if this page was destoried.
+    }
   }
 
   @override
   Widget build(BuildContext context) {
+    var recommendBooks = this._home.recommendBooks.map((book) {
+        return new BookImage(imageUrl: book.imageUrl);
+    }).toList();
+
     return new Scaffold(
-      body: new Center(
-        child: new Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: <Widget>[
-            new Container(
-              padding: const EdgeInsets.only(top: 20.0),
-              child: new Text(
-                'あなたにおすすめの本',
-                style: new TextStyle(
-                  color: themeData.primaryColor,
-                  fontSize: 18.0
-                ),
+      body: new ListView(
+        shrinkWrap: false,
+        children: [
+          new Container(
+            padding: const EdgeInsets.only(top: 20.0),
+            child: new Text(
+              'あなたにおすすめの本',
+              style: new TextStyle(
+                color: themeData.primaryColor,
+                fontSize: 18.0
               ),
-            ),
-          ],
-        ),
-      ),// This trailing comma makes auto-formatting nicer for build methods.
+              textAlign: TextAlign.center,
+            )
+          ),
+          GridView.count(
+            shrinkWrap: true,
+            primary: false,
+            crossAxisCount: 3,
+            crossAxisSpacing: 10.0,
+            mainAxisSpacing: 26.0,      
+            padding: const EdgeInsets.all(20),
+            children: recommendBooks
+          )],// This trailing comma makes auto-formatting nicer for build methods.
+      )
     );
   }
 }
