@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_sample/api/bookstand_api_impl.dart';
+import 'package:flutter_sample/repository/home_repository_impl.dart';
 import 'package:flutter_sample/theme.dart';
 
 class HomePage extends StatefulWidget {
@@ -20,6 +22,21 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+
+  @override
+  void initState() {
+    super.initState();
+
+    _fetch();
+  }
+
+  Future<Null> _fetch() async {
+    var homeRepository = new HomeRepositoryImpl(new BookstandApiImpl());
+    var home = await homeRepository.findAll();
+    home.recommendBooks.forEach((f) {
+      debugPrint(f.imageUrl);
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
