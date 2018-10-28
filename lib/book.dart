@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_sample/theme.dart';
+import 'package:flutter_sample/web_view.dart';
 
 class BookPage extends StatefulWidget {
   BookPage({Key key, this.bookId, this.imageUrl}) : super(key: key);
@@ -68,12 +69,19 @@ class _BookPageState extends State<BookPage> {
                 borderRadius: BorderRadius.all(Radius.circular(4))),
             margin: EdgeInsets.only(top: 20, left: 16, right: 16),
             child: new FlatButton(
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) =>
+                              WebViewPage(url: "http://yahoo.co.jp")));
+                },
                 child: new Align(
-              alignment: Alignment.centerLeft,
-              child: new Text('Amazonで詳細を見る',
-                  style: new TextStyle(fontSize: 14, color: Colors.white),
-                  textAlign: TextAlign.start),
-            )),
+                  alignment: Alignment.centerLeft,
+                  child: new Text('Amazonで詳細を見る',
+                      style: new TextStyle(fontSize: 14, color: Colors.white),
+                      textAlign: TextAlign.start),
+                )),
           )
         ]));
   }
