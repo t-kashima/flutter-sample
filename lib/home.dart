@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_sample/api/bookstand_api_impl.dart';
+import 'package:flutter_sample/book.dart';
 import 'package:flutter_sample/model/home.dart';
 import 'package:flutter_sample/repository/home_repository_impl.dart';
 import 'package:flutter_sample/theme.dart';
@@ -50,7 +51,12 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     var recommendBooks = this._home.recommendBooks.map((book) {
-        return new BookImage(imageUrl: book.imageUrl);
+        return new GestureDetector(
+          onTap: () {
+            Navigator.push(context, MaterialPageRoute(builder: (context) => BookPage(bookId: book.id, imageUrl: book.imageUrl)));
+          },
+          child: new BookImage(imageUrl: book.imageUrl)
+        );
     }).toList();
 
     return new Scaffold(

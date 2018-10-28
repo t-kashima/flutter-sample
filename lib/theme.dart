@@ -6,18 +6,20 @@ final ThemeData themeData = new ThemeData(
     cardColor: Colors.white,
     dividerColor: Colors.grey[300],
     backgroundColor: Colors.grey[100],
-    primaryColor: _MyColors.theme[500],
-    primaryColorDark: _MyColors.theme[600],
+    primaryColor: MyColors.theme[500],
+    primaryColorDark: MyColors.theme[600],
     primaryColorBrightness: Brightness.light,
     secondaryHeaderColor: Colors.white,
-    accentColor: _MyColors.accent[500],
+    accentColor: MyColors.accent[500],
     primaryTextTheme: new Typography(platform: defaultTargetPlatform).white,
     primaryIconTheme: const IconThemeData(color: Colors.white),
     accentIconTheme: const IconThemeData(color: Colors.white),
 );
 
-class _MyColors {
-  _MyColors._(); // this basically makes it so you can instantiate this class
+class MyColors {
+  MyColors._(); // this basically makes it so you can instantiate this class
+
+  static const Color text = Color(0xFF211A16);
 
   static const Map<int, Color> theme = const <int, Color>{
     600: const Color(0xFF211A16),

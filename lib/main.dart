@@ -77,7 +77,6 @@ class _MyHomePageState extends State<MyHomePage> {
         // the App.build method, and use it to set our appbar title.
         centerTitle: true,
         title: _shouldShowSelectBookshelf ? new SelectBookshelfContainer() : new Image.asset('assets/logo.png'),
-        backgroundColor: themeData.primaryColor,
       ),
       body: new PageView(
         physics: new NeverScrollableScrollPhysics(),
