@@ -5,7 +5,7 @@ import 'package:url_launcher/url_launcher.dart';
 class BookPage extends StatefulWidget {
   BookPage({Key key, this.bookId, this.imageUrl}) : super(key: key);
 
-  final BigInt bookId;
+  final int bookId;
   final String imageUrl;
 
   @override
