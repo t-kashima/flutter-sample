@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_sample/theme.dart';
-import 'package:flutter_sample/web_view.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class BookPage extends StatefulWidget {
   BookPage({Key key, this.bookId, this.imageUrl}) : super(key: key);
@@ -69,12 +69,11 @@ class _BookPageState extends State<BookPage> {
                 borderRadius: BorderRadius.all(Radius.circular(4))),
             margin: EdgeInsets.only(top: 20, left: 16, right: 16),
             child: new FlatButton(
-                onPressed: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) =>
-                              WebViewPage(url: "http://yahoo.co.jp")));
+                onPressed: () async {
+                  const url = 'https://flutter.io';
+                  if (await canLaunch(url)) {
+                    await launch(url);
+                  }
                 },
                 child: new Align(
                   alignment: Alignment.centerLeft,
