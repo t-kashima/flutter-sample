@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_sample/bookshelf.dart';
+import 'package:flutter_sample/model/book_status.dart';
 import 'package:flutter_sample/theme.dart';
 
 class BookshelfPager extends StatefulWidget {
@@ -49,9 +50,9 @@ class _BookshelfPagerState extends State<BookshelfPager> {
          ),
           body: TabBarView(
             children: [
-              BookshelfPage(),
-              BookshelfPage(),
-              BookshelfPage(),
+              BookshelfPage(bookStatus: BookStatus.wantToRead),
+              BookshelfPage(bookStatus: BookStatus.reading),
+              BookshelfPage(bookStatus: BookStatus.finishedReading),
             ],
           ),
         ),

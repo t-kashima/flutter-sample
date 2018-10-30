@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_sample/api/bookstand_api_impl.dart';
 import 'package:flutter_sample/book.dart';
+import 'package:flutter_sample/model/book_status.dart';
 import 'package:flutter_sample/model/bookshelf.dart';
 import 'package:flutter_sample/repository/bookshelf_repository_impl.dart';
 import 'package:flutter_sample/ui/book_image.dart';
 
 class BookshelfPage extends StatefulWidget {
-  BookshelfPage({Key key, this.title}) : super(key: key);
+  BookshelfPage({Key key, this.bookStatus}) : super(key: key);
 
   // This widget is the home page of your application. It is stateful, meaning
   // that it has a State object (defined below) that contains fields that affect
@@ -17,7 +18,7 @@ class BookshelfPage extends StatefulWidget {
   // used by the build method of the State. Fields in a Widget subclass are
   // always marked "final".
 
-  final String title;
+  final BookStatus bookStatus;
 
   @override
   _BookshelfPageState createState() => new _BookshelfPageState();
@@ -36,7 +37,7 @@ class _BookshelfPageState extends State<BookshelfPage> {
 
   Future<Null> _fetch() async {
     var bookshelfRepository = new BookshelfRepositoryImpl(new BookstandApiImpl());
-    var bookshelf = await bookshelfRepository.find();
+    var bookshelf = await bookshelfRepository.find(bookStatus: widget.bookStatus);
     
     try {
       setState(() {

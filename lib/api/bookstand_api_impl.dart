@@ -1,5 +1,6 @@
 import 'package:flutter_sample/api/bookstand_api.dart';
 import 'package:flutter_sample/model/book.dart';
+import 'package:flutter_sample/model/book_status.dart';
 import 'package:flutter_sample/model/bookshelf.dart';
 import 'package:flutter_sample/model/home.dart';
 import 'package:http/http.dart' as http;
@@ -20,8 +21,8 @@ class BookstandApiImpl implements BookstandApi {
   }
 
   @override
-  Future<Bookshelf> getBookshelf() async {
-    var json = await _requestAll("/books?uuid=cd6522a8-12a9-493e-bab3-bf82725255dc&status=1&page=1&sort=0");
+  Future<Bookshelf> getBookshelf({bookStatus: BookStatus}) async {
+    var json = await _requestAll("/books?uuid=cd6522a8-12a9-493e-bab3-bf82725255dc&status=${bookStatus.index}&page=1&sort=0");
     var books = List<Book>();
     for (var book in json["books"]) {
       books.add(Book(book["id"], book["image_url"]));
