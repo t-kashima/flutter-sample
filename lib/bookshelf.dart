@@ -38,7 +38,7 @@ class _BookshelfPageState extends State<BookshelfPage> {
   Future<Null> _fetch() async {
     var bookshelfRepository = new BookshelfRepositoryImpl(new BookstandApiImpl());
     var bookshelf = await bookshelfRepository.find(bookStatus: widget.bookStatus);
-    
+
     try {
       setState(() {
         this._bookshelf = bookshelf;

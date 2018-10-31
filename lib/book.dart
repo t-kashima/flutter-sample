@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_sample/api/bookstand_api_impl.dart';
+import 'package:flutter_sample/model/book_detail.dart';
+import 'package:flutter_sample/repository/book_repository_impl.dart';
 import 'package:flutter_sample/theme.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -13,8 +16,32 @@ class BookPage extends StatefulWidget {
 }
 
 class _BookPageState extends State<BookPage> {
+  BookDetail _book;
+
+  @override
+  void initState() {
+    super.initState();
+
+    _fetch();
+  }
+
+  Future<Null> _fetch() async {
+    var bookRepository = new BookRepositoryImpl(new BookstandApiImpl());
+    var book = await bookRepository.find(bookId: widget.bookId);
+
+    try {
+      setState(() {
+        this._book = book;
+      });
+    } catch(e) {
+      // You can't set the state if this page was destoried.
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
+    var releasedAt = _book?.releasedAt != null ? _book?.releasedAt + "発売" : null;
+
     return new Scaffold(
         appBar: new AppBar(title: new Text('本の詳細')),
         body: new ListView(children: [
@@ -29,14 +56,14 @@ class _BookPageState extends State<BookPage> {
                       margin: const EdgeInsets.only(right: 10),
                       width: 96,
                       alignment: Alignment(0, -1),
-                      child: Image.network(widget.imageUrl)),
+                      child: Image.network(_book?.imageUrl ?? widget.imageUrl)),
                   new Expanded(
                       child: new Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           mainAxisSize: MainAxisSize.min,
                           children: [
                         new Text(
-                          "アサシン an Assassin(限定復刻版)",
+                          _book?.title ?? "",
                           maxLines: 2,
                           overflow: TextOverflow.ellipsis,
                           style: new TextStyle(
@@ -46,7 +73,7 @@ class _BookPageState extends State<BookPage> {
                         ),
                         new Container(
                             padding: const EdgeInsets.only(top: 10),
-                            child: new Text("伊藤計劃",
+                            child: new Text(_book?.author ?? "",
                                 softWrap: true,
                                 style: new TextStyle(
                                     fontSize: 14, color: MyColors.text))),
@@ -55,7 +82,7 @@ class _BookPageState extends State<BookPage> {
                                 mainAxisAlignment: MainAxisAlignment.end,
                                 crossAxisAlignment: CrossAxisAlignment.end,
                                 children: [
-                              new Text("早川書房 / 2010年2月10日発売",
+                              new Text("${_book?.manufacturer ?? ""}${releasedAt != null ? " / " + releasedAt : ""}",
                                   softWrap: true,
                                   style: new TextStyle(
                                       fontSize: 12, color: MyColors.text))

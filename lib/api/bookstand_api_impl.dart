@@ -1,8 +1,10 @@
 import 'package:flutter_sample/api/bookstand_api.dart';
 import 'package:flutter_sample/model/book.dart';
+import 'package:flutter_sample/model/book_detail.dart';
 import 'package:flutter_sample/model/book_status.dart';
 import 'package:flutter_sample/model/bookshelf.dart';
 import 'package:flutter_sample/model/home.dart';
+import 'package:intl/intl.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
@@ -30,11 +32,19 @@ class BookstandApiImpl implements BookstandApi {
     return Bookshelf(books);
   }
 
+  @override
+  Future<BookDetail> getBook({bookId: int}) async {
+    var json = await _requestAll("/books/$bookId?uuid=cd6522a8-12a9-493e-bab3-bf82725255dc");
+    var releasedAt = new DateTime.fromMillisecondsSinceEpoch(json["released_at"] * 1000);
+    var formatter = new DateFormat('yyyy年MM月dd日');
+    return BookDetail(json["id"], json["image_l_url"], json["title"], json["author"], json["manufacturer"], formatter.format(releasedAt));
+  }
+
   Future<Map<String, dynamic>> _requestAll(String path) async {
     var url = "$_BASE_URL$path";
     print("URL: $url");
-    var response = await http.read(url);
-    print("Response: ${response.toString()}");
-    return json.decode(response);
+    var response = await http.get(url);
+    print("Response: ${utf8.decode(response.bodyBytes)}");
+    return json.decode(utf8.decode(response.bodyBytes));
   }
 }

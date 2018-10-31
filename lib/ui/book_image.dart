@@ -24,7 +24,7 @@ class _BookImageState extends State<BookImage> {
   Widget build(BuildContext context) {
     return new Scaffold(
       body: new Container(
-        alignment: Alignment(0, 1.0),        
+        alignment: Alignment(0, 1.0),
         child: new Container(
           child: new Image.network(widget.imageUrl),
           decoration: new BoxDecoration(
