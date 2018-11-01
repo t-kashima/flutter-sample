@@ -8,5 +8,7 @@ abstract class BookstandApi {
 
   Future<Bookshelf> getBookshelf({bookStatus: BookStatus});
 
-  Future<BookDetail> getBook({bookId: int});
+  Future<BookDetail> getBookByBookId({bookId: int});
+
+  Future<BookDetail> getBookByISBN({isbn: int});
 }

@@ -53,7 +53,7 @@ class _BookshelfPageState extends State<BookshelfPage> {
     var books = this._bookshelf.books.map((book) {
         return new GestureDetector(
           onTap: () {
-            Navigator.push(context, MaterialPageRoute(builder: (context) => BookPage(bookId: book.id, imageUrl: book.imageUrl)));
+            Navigator.push(context, MaterialPageRoute(builder: (context) => BookPage.newInstanceForBookId(bookId: book.id, imageUrl: book.imageUrl)));
           },
           child: new BookImage(imageUrl: book.imageUrl)
         );
@@ -64,7 +64,7 @@ class _BookshelfPageState extends State<BookshelfPage> {
               child: GridView.count(
                 crossAxisCount: 3,
                 crossAxisSpacing: 10.0,
-                mainAxisSpacing: 26.0,      
+                mainAxisSpacing: 26.0,
                 padding: const EdgeInsets.all(20),
                 children: books
               )

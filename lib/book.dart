@@ -6,10 +6,25 @@ import 'package:flutter_sample/theme.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class BookPage extends StatefulWidget {
-  BookPage({Key key, this.bookId, this.imageUrl}) : super(key: key);
+  BookPage({Key key}) : super(key: key);
 
-  final int bookId;
-  final String imageUrl;
+  static BookPage newInstanceForBookId({int bookId, String imageUrl}) {
+    var bookPage = BookPage();
+    bookPage.bookId = bookId;
+    bookPage.imageUrl = imageUrl;
+    return bookPage;
+  }
+
+  static BookPage newInstanceForISBN({int isbn, String imageUrl}) {
+    var bookPage = BookPage();
+    bookPage.isbn = isbn;
+    bookPage.imageUrl = imageUrl;
+    return bookPage;
+  }
+
+  int isbn;
+  int bookId;
+  String imageUrl;
 
   @override
   _BookPageState createState() => new _BookPageState();
@@ -27,7 +42,13 @@ class _BookPageState extends State<BookPage> {
 
   Future<Null> _fetch() async {
     var bookRepository = new BookRepositoryImpl(new BookstandApiImpl());
-    var book = await bookRepository.find(bookId: widget.bookId);
+
+    BookDetail book;
+    if (widget.bookId != null) {
+      book = await bookRepository.findByBookId(bookId: widget.bookId);
+    } else {
+      book = await bookRepository.findByISBN(isbn: widget.isbn);
+    }
 
     try {
       setState(() {

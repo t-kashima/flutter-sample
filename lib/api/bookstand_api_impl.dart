@@ -17,7 +17,7 @@ class BookstandApiImpl implements BookstandApi {
         "/user/find?uuid=cd6522a8-12a9-493e-bab3-bf82725255dc");
     var recommendBooks = List<Book>();
     for (var book in json["recommend_books"]) {
-      recommendBooks.add(Book(book["id"], book["image_url"]));
+      recommendBooks.add(Book(book["id"], book["isbn"], book["image_url"]));
     }
     return Home(recommendBooks);
   }
@@ -27,17 +27,25 @@ class BookstandApiImpl implements BookstandApi {
     var json = await _requestAll("/books?uuid=cd6522a8-12a9-493e-bab3-bf82725255dc&status=${bookStatus.index}&page=1&sort=0");
     var books = List<Book>();
     for (var book in json["books"]) {
-      books.add(Book(book["id"], book["image_url"]));
+      books.add(Book(book["id"], book["isbn"], book["image_url"]));
     }
     return Bookshelf(books);
   }
 
   @override
-  Future<BookDetail> getBook({bookId: int}) async {
+  Future<BookDetail> getBookByBookId({bookId: int}) async {
     var json = await _requestAll("/books/$bookId?uuid=cd6522a8-12a9-493e-bab3-bf82725255dc");
     var releasedAt = new DateTime.fromMillisecondsSinceEpoch(json["released_at"] * 1000);
     var formatter = new DateFormat('yyyy年MM月dd日');
     return BookDetail(json["id"], json["image_l_url"], json["title"], json["author"], json["manufacturer"], formatter.format(releasedAt));
+  }
+
+  @override
+  Future<BookDetail> getBookByISBN({isbn: int}) async {
+    var json = await _requestAll("/search_book_by_isbn?isbn=$isbn&uuid=cd6522a8-12a9-493e-bab3-bf82725255dc");
+    var releasedAt = new DateTime.fromMillisecondsSinceEpoch(json["released_at"] * 1000);
+    var formatter = new DateFormat('yyyy年MM月dd日');
+    return BookDetail(null, json["image_l_url"], json["title"], json["author"], json["manufacturer"], formatter.format(releasedAt));
   }
 
   Future<Map<String, dynamic>> _requestAll(String path) async {

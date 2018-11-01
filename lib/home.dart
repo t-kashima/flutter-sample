@@ -53,7 +53,7 @@ class _HomePageState extends State<HomePage> {
     var recommendBooks = this._home.recommendBooks.map((book) {
         return new GestureDetector(
           onTap: () {
-            Navigator.push(context, MaterialPageRoute(builder: (context) => BookPage(bookId: book.id, imageUrl: book.imageUrl)));
+            Navigator.push(context, MaterialPageRoute(builder: (context) => BookPage.newInstanceForISBN(isbn: book.isbn, imageUrl: book.imageUrl)));
           },
           child: new BookImage(imageUrl: book.imageUrl)
         );

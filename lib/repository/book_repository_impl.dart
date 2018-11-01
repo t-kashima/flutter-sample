@@ -8,7 +8,12 @@ class BookRepositoryImpl implements BookRepository {
   BookRepositoryImpl(this._api);
 
   @override
-  Future<BookDetail> find({bookId: int}) {
-    return _api.getBook(bookId: bookId);
+  Future<BookDetail> findByBookId({bookId: int}) {
+    return _api.getBookByBookId(bookId: bookId);
+  }
+
+  @override
+  Future<BookDetail> findByISBN({isbn: int}) {
+    return _api.getBookByISBN(isbn: isbn);
   }
 }
