@@ -25,7 +25,6 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-
   Home _home = new Home([]);
 
   @override
@@ -43,7 +42,7 @@ class _HomePageState extends State<HomePage> {
       setState(() {
         this._home = home;
       });
-    } catch(e) {
+    } catch (e) {
       // You can't set the state if this page was destoried.
     }
   }
@@ -51,39 +50,38 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     var recommendBooks = this._home.recommendBooks.map((book) {
-        return new GestureDetector(
+      return new GestureDetector(
           onTap: () {
-            Navigator.push(context, MaterialPageRoute(builder: (context) => BookPage.newInstanceForISBN(isbn: book.isbn, imageUrl: book.imageUrl)));
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => BookPage.newInstanceForISBN(
+                        isbn: book.isbn, imageUrl: book.imageUrl)));
           },
-          child: new BookImage(imageUrl: book.imageUrl)
-        );
+          child: new BookImage(imageUrl: book.imageUrl));
     }).toList();
 
     return new Scaffold(
-      body: new ListView(
-        shrinkWrap: false,
-        children: [
-          new Container(
+        body: new ListView(
+      shrinkWrap: false,
+      children: [
+        new Container(
             padding: const EdgeInsets.only(top: 20.0),
             child: new Text(
               'あなたにおすすめの本',
-              style: new TextStyle(
-                color: themeData.primaryColor,
-                fontSize: 18.0
-              ),
+              style:
+                  new TextStyle(color: themeData.primaryColor, fontSize: 18.0),
               textAlign: TextAlign.center,
-            )
-          ),
-          GridView.count(
+            )),
+        GridView.count(
             shrinkWrap: true,
             primary: false,
             crossAxisCount: 3,
             crossAxisSpacing: 10.0,
-            mainAxisSpacing: 26.0,      
+            mainAxisSpacing: 26.0,
             padding: const EdgeInsets.all(20),
-            children: recommendBooks
-          )],// This trailing comma makes auto-formatting nicer for build methods.
-      )
-    );
+            children: recommendBooks)
+      ], // This trailing comma makes auto-formatting nicer for build methods.
+    ));
   }
 }
