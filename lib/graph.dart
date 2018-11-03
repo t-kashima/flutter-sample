@@ -37,12 +37,510 @@ class _GraphPageState extends State<GraphPage> {
               ]),
               new Flexible(
                 child: new Container(
-                  height: 152,
-                  decoration: new BoxDecoration(
-                    color: Colors.blueGrey,
+                    height: 109,
+                    margin: const EdgeInsets.only(top: 20, bottom: 8),
+                    child: new Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
+                        children: [
+                          new Expanded(
+                            child: new Column(children: [
+                              new Expanded(
+                                flex: 7,
+                                child: new Container(
+                                  alignment: Alignment(0, 1),
+                                  margin: const EdgeInsets.only(bottom: 5),
+                                  child: new Text(
+                                    "3",
+                                    textAlign: TextAlign.center,
+                                    style: new TextStyle(
+                                      color: MyColors.text,
+                                      fontSize: 16.0,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              new Expanded(
+                                flex: 3,
+                                child: Container(
+                                  decoration: new BoxDecoration(
+                                    color: themeData.primaryColor,
+                                  ),
+                                  margin: const EdgeInsets.only(
+                                    left: 4,
+                                    right: 4,
+                                  ),
+                                ),
+                              )
+                            ]),
+                          ),
+                          new Expanded(
+                            child: new Column(children: [
+                              new Expanded(
+                                flex: 5,
+                                child: new Container(
+                                  alignment: Alignment(0, 1),
+                                  margin: const EdgeInsets.only(bottom: 5),
+                                  child: new Text(
+                                    "5",
+                                    textAlign: TextAlign.center,
+                                    style: new TextStyle(
+                                      color: MyColors.text,
+                                      fontSize: 16.0,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              new Expanded(
+                                flex: 5,
+                                child: new Container(
+                                  decoration: new BoxDecoration(
+                                    color: themeData.primaryColor,
+                                  ),
+                                  margin: const EdgeInsets.only(
+                                    left: 4,
+                                    right: 4,
+                                  ),
+                                ),
+                              )
+                            ]),
+                          ),
+                          new Expanded(
+                            child: new Column(children: [
+                              new Expanded(
+                                flex: 2,
+                                child: new Container(
+                                  alignment: Alignment(0, 1),
+                                  margin: const EdgeInsets.only(bottom: 5),
+                                  child: new Text(
+                                    "8",
+                                    textAlign: TextAlign.center,
+                                    style: new TextStyle(
+                                      color: MyColors.text,
+                                      fontSize: 16.0,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              new Expanded(
+                                flex: 8,
+                                child: new Container(
+                                  decoration: new BoxDecoration(
+                                    color: themeData.primaryColor,
+                                  ),
+                                  margin: const EdgeInsets.only(
+                                    left: 4,
+                                    right: 4,
+                                  ),
+                                ),
+                              )
+                            ]),
+                          ),
+                          new Expanded(
+                            child: new Column(children: [
+                              new Expanded(
+                                flex: 3,
+                                child: new Container(
+                                  alignment: Alignment(0, 1),
+                                  margin: const EdgeInsets.only(bottom: 5),
+                                  child: new Text(
+                                    "7",
+                                    textAlign: TextAlign.center,
+                                    style: new TextStyle(
+                                      color: MyColors.text,
+                                      fontSize: 16.0,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              new Expanded(
+                                flex: 7,
+                                child: new Container(
+                                  decoration: new BoxDecoration(
+                                    color: themeData.primaryColor,
+                                  ),
+                                  margin: const EdgeInsets.only(
+                                    left: 4,
+                                    right: 4,
+                                  ),
+                                ),
+                              )
+                            ]),
+                          ),
+                          new Expanded(
+                            child: new Column(children: [
+                              new Expanded(
+                                flex: 8,
+                                child: new Container(
+                                  alignment: Alignment(0, 1),
+                                  margin: const EdgeInsets.only(bottom: 5),
+                                  child: new Text(
+                                    "2",
+                                    textAlign: TextAlign.center,
+                                    style: new TextStyle(
+                                      color: MyColors.text,
+                                      fontSize: 16.0,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              new Expanded(
+                                flex: 2,
+                                child: new Container(
+                                  decoration: new BoxDecoration(
+                                    color: themeData.primaryColor,
+                                  ),
+                                  margin: const EdgeInsets.only(
+                                    left: 4,
+                                    right: 4,
+                                  ),
+                                ),
+                              )
+                            ]),
+                          ),
+                          new Expanded(
+                            child: new Column(children: [
+                              new Expanded(
+                                flex: 4,
+                                child: new Container(
+                                  alignment: Alignment(0, 1),
+                                  margin: const EdgeInsets.only(bottom: 5),
+                                  child: new Text(
+                                    "6",
+                                    textAlign: TextAlign.center,
+                                    style: new TextStyle(
+                                      color: MyColors.text,
+                                      fontSize: 16.0,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              new Expanded(
+                                flex: 6,
+                                child: new Container(
+                                  decoration: new BoxDecoration(
+                                    color: themeData.primaryColor,
+                                  ),
+                                  margin: const EdgeInsets.only(
+                                    left: 4,
+                                    right: 4,
+                                  ),
+                                ),
+                              )
+                            ]),
+                          ),
+                          new Expanded(
+                            child: new Column(children: [
+                              new Expanded(
+                                flex: 7,
+                                child: new Container(
+                                  alignment: Alignment(0, 1),
+                                  margin: const EdgeInsets.only(bottom: 5),
+                                  child: new Text(
+                                    "3",
+                                    textAlign: TextAlign.center,
+                                    style: new TextStyle(
+                                      color: MyColors.text,
+                                      fontSize: 16.0,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              new Expanded(
+                                flex: 3,
+                                child: new Container(
+                                  decoration: new BoxDecoration(
+                                    color: themeData.primaryColor,
+                                  ),
+                                  margin: const EdgeInsets.only(
+                                    left: 4,
+                                    right: 4,
+                                  ),
+                                ),
+                              )
+                            ]),
+                          ),
+                          new Expanded(
+                            child: new Column(children: [
+                              new Expanded(
+                                flex: 2,
+                                child: new Container(
+                                  alignment: Alignment(0, 1),
+                                  margin: const EdgeInsets.only(bottom: 5),
+                                  child: new Text(
+                                    "8",
+                                    textAlign: TextAlign.center,
+                                    style: new TextStyle(
+                                      color: MyColors.text,
+                                      fontSize: 16.0,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              new Expanded(
+                                flex: 8,
+                                child: new Container(
+                                  decoration: new BoxDecoration(
+                                    color: themeData.primaryColor,
+                                  ),
+                                  margin: const EdgeInsets.only(
+                                    left: 4,
+                                    right: 4,
+                                  ),
+                                ),
+                              )
+                            ]),
+                          ),
+                          new Expanded(
+                            child: new Column(children: [
+                              new Expanded(
+                                flex: 8,
+                                child: new Container(
+                                  alignment: Alignment(0, 1),
+                                  margin: const EdgeInsets.only(bottom: 5),
+                                  child: new Text(
+                                    "2",
+                                    textAlign: TextAlign.center,
+                                    style: new TextStyle(
+                                      color: MyColors.text,
+                                      fontSize: 16.0,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              new Expanded(
+                                flex: 2,
+                                child: new Container(
+                                  decoration: new BoxDecoration(
+                                    color: themeData.primaryColor,
+                                  ),
+                                  margin: const EdgeInsets.only(
+                                    left: 4,
+                                    right: 4,
+                                  ),
+                                ),
+                              )
+                            ]),
+                          ),
+                          new Expanded(
+                            child: new Column(children: [
+                              new Expanded(
+                                flex: 2,
+                                child: new Container(
+                                  alignment: Alignment(0, 1),
+                                  margin: const EdgeInsets.only(bottom: 5),
+                                  child: new Text(
+                                    "8",
+                                    textAlign: TextAlign.center,
+                                    style: new TextStyle(
+                                      color: MyColors.text,
+                                      fontSize: 16.0,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              new Expanded(
+                                flex: 8,
+                                child: new Container(
+                                  decoration: new BoxDecoration(
+                                    color: themeData.primaryColor,
+                                  ),
+                                  margin: const EdgeInsets.only(
+                                    left: 4,
+                                    right: 4,
+                                  ),
+                                ),
+                              )
+                            ]),
+                          ),
+                          new Expanded(
+                            child: new Column(children: [
+                              new Expanded(
+                                flex: 5,
+                                child: new Container(
+                                  alignment: Alignment(0, 1),
+                                  margin: const EdgeInsets.only(bottom: 5),
+                                  child: new Text(
+                                    "5",
+                                    textAlign: TextAlign.center,
+                                    style: new TextStyle(
+                                      color: MyColors.text,
+                                      fontSize: 16.0,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              new Expanded(
+                                flex: 5,
+                                child: new Container(
+                                  decoration: new BoxDecoration(
+                                    color: themeData.primaryColor,
+                                  ),
+                                  margin: const EdgeInsets.only(
+                                    left: 4,
+                                    right: 4,
+                                  ),
+                                ),
+                              )
+                            ]),
+                          ),
+                          new Expanded(
+                            child: new Column(children: [
+                              new Expanded(
+                                flex: 7,
+                                child: new Container(
+                                  alignment: Alignment(0, 1),
+                                  margin: const EdgeInsets.only(bottom: 5),
+                                  child: new Text(
+                                    "3",
+                                    textAlign: TextAlign.center,
+                                    style: new TextStyle(
+                                      color: MyColors.text,
+                                      fontSize: 16.0,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              new Expanded(
+                                flex: 3,
+                                child: new Container(
+                                  decoration: new BoxDecoration(
+                                    color: themeData.primaryColor,
+                                  ),
+                                  margin: const EdgeInsets.only(
+                                    left: 4,
+                                    right: 4,
+                                  ),
+                                ),
+                              )
+                            ]),
+                          ),
+                        ])),
+              ),
+              new Container(
+                margin: const EdgeInsets.only(bottom: 30),
+                child: new Row(children: [
+                  new Expanded(
+                    child: new Text(
+                      "1",
+                      textAlign: TextAlign.center,
+                      style: new TextStyle(
+                        color: MyColors.grey[500],
+                        fontSize: 16.0,
+                      ),
+                    ),
                   ),
-                  margin: const EdgeInsets.only(top: 16, bottom: 30),
-                ),
+                  new Expanded(
+                    child: new Text(
+                      "2",
+                      textAlign: TextAlign.center,
+                      style: new TextStyle(
+                        color: MyColors.grey[500],
+                        fontSize: 16.0,
+                      ),
+                    ),
+                  ),
+                  new Expanded(
+                    child: new Text(
+                      "3",
+                      textAlign: TextAlign.center,
+                      style: new TextStyle(
+                        color: MyColors.grey[500],
+                        fontSize: 16.0,
+                      ),
+                    ),
+                  ),
+                  new Expanded(
+                    child: new Text(
+                      "4",
+                      textAlign: TextAlign.center,
+                      style: new TextStyle(
+                        color: MyColors.grey[500],
+                        fontSize: 16.0,
+                      ),
+                    ),
+                  ),
+                  new Expanded(
+                    child: new Text(
+                      "5",
+                      textAlign: TextAlign.center,
+                      style: new TextStyle(
+                        color: MyColors.grey[500],
+                        fontSize: 16.0,
+                      ),
+                    ),
+                  ),
+                  new Expanded(
+                    child: new Text(
+                      "6",
+                      textAlign: TextAlign.center,
+                      style: new TextStyle(
+                        color: MyColors.grey[500],
+                        fontSize: 16.0,
+                      ),
+                    ),
+                  ),
+                  new Expanded(
+                    child: new Text(
+                      "7",
+                      textAlign: TextAlign.center,
+                      style: new TextStyle(
+                        color: MyColors.grey[500],
+                        fontSize: 16.0,
+                      ),
+                    ),
+                  ),
+                  new Expanded(
+                    child: new Text(
+                      "8",
+                      textAlign: TextAlign.center,
+                      style: new TextStyle(
+                        color: MyColors.grey[500],
+                        fontSize: 16.0,
+                      ),
+                    ),
+                  ),
+                  new Expanded(
+                    child: new Text(
+                      "9",
+                      textAlign: TextAlign.center,
+                      style: new TextStyle(
+                        color: MyColors.grey[500],
+                        fontSize: 16.0,
+                      ),
+                    ),
+                  ),
+                  new Expanded(
+                    child: new Text(
+                      "10",
+                      textAlign: TextAlign.center,
+                      style: new TextStyle(
+                        color: MyColors.grey[500],
+                        fontSize: 16.0,
+                      ),
+                    ),
+                  ),
+                  new Expanded(
+                    child: new Text(
+                      "11",
+                      textAlign: TextAlign.center,
+                      style: new TextStyle(
+                        color: MyColors.grey[500],
+                        fontSize: 16.0,
+                      ),
+                    ),
+                  ),
+                  new Expanded(
+                    child: new Text(
+                      "12",
+                      textAlign: TextAlign.center,
+                      style: new TextStyle(
+                        color: MyColors.grey[500],
+                        fontSize: 16.0,
+                      ),
+                    ),
+                  ),
+                ]),
               ),
               new Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
