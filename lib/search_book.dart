@@ -36,6 +36,9 @@ class _SearchBookPageState extends State<SearchBookPage> {
             },
           ),
           buildBorder(),
+          buildSearchContainer(onPressed: () {
+            debugPrint("onTap search with keyword");
+          }),
         ],
       ),
     );
@@ -63,6 +66,34 @@ class _SearchBookPageState extends State<SearchBookPage> {
             fontSize: 16.0,
           ),
           textAlign: TextAlign.start,
+        ),
+      ),
+    );
+  }
+
+  Widget buildSearchContainer({VoidCallback onPressed}) {
+    return new FlatButton(
+      padding: const EdgeInsets.all(0),
+      onPressed: onPressed,
+      child: new Container(
+        margin: const EdgeInsets.only(top: 20, left: 10, bottom: 20, right: 10),
+        decoration: BoxDecoration(
+          border: Border.all(width: 2, color: themeData.accentColor),
+        ),
+        padding: const EdgeInsets.only(top: 12, left: 20, bottom: 12, right: 8),
+        child: Row(
+          children: <Widget>[
+            new Expanded(
+              child: new Text(
+                "検索キーワード入力",
+                style: TextStyle(
+                  fontSize: 16.0,
+                  color: themeData.accentColor,
+                ),
+              ),
+            ),
+            new Image.asset("assets/ic_search_24.png"),
+          ],
         ),
       ),
     );
