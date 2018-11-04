@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_sample/bookshelf_pager.dart';
 import 'package:flutter_sample/graph.dart';
 import 'package:flutter_sample/home.dart';
+import 'package:flutter_sample/setting.dart';
 import 'package:flutter_sample/theme.dart';
 import 'package:flutter_sample/ui/select_bookshelf_container.dart';
 
@@ -86,7 +87,7 @@ class _MyHomePageState extends State<MyHomePage> {
           new HomePage(),
           new BookshelfPager(),
           new GraphPage(),
-          new HomePage(),
+          new SettingPage(),
         ],
       ),
       bottomNavigationBar: new Theme(

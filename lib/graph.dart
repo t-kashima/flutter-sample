@@ -1,10 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_sample/api/bookstand_api_impl.dart';
-import 'package:flutter_sample/book.dart';
-import 'package:flutter_sample/model/home.dart';
-import 'package:flutter_sample/repository/home_repository_impl.dart';
 import 'package:flutter_sample/theme.dart';
-import 'package:flutter_sample/ui/book_image.dart';
 
 class GraphPage extends StatefulWidget {
   GraphPage({Key key}) : super(key: key);

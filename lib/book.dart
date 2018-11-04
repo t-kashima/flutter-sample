@@ -54,14 +54,14 @@ class _BookPageState extends State<BookPage> {
       setState(() {
         this._book = book;
       });
-    } catch(e) {
+    } catch (e) {
       // You can't set the state if this page was destoried.
     }
   }
 
   @override
   Widget build(BuildContext context) {
-    var releasedAt = _book?.releasedAt != null ? _book?.releasedAt + "発売" : null;
+    var releasedAt = _book?.releasedAt != null ? _book.releasedAt + "発売" : null;
 
     return new Scaffold(
         appBar: new AppBar(title: new Text('本の詳細')),
@@ -103,7 +103,8 @@ class _BookPageState extends State<BookPage> {
                                 mainAxisAlignment: MainAxisAlignment.end,
                                 crossAxisAlignment: CrossAxisAlignment.end,
                                 children: [
-                              new Text("${_book?.manufacturer ?? ""}${releasedAt != null ? " / " + releasedAt : ""}",
+                              new Text(
+                                  "${_book?.manufacturer ?? ""}${releasedAt != null ? " / " + releasedAt : ""}",
                                   softWrap: true,
                                   style: new TextStyle(
                                       fontSize: 12, color: MyColors.text))
