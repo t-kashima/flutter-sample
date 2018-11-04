@@ -31,6 +31,7 @@ class MyColors {
   };
 
   static const Map<int, Color> grey = const <int, Color>{
+    600: const Color(0xFF54473F),
     500: const Color(0xFFB7B7B7),
   };
 }

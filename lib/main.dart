@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_sample/bookshelf_pager.dart';
 import 'package:flutter_sample/graph.dart';
 import 'package:flutter_sample/home.dart';
+import 'package:flutter_sample/search_book.dart';
 import 'package:flutter_sample/setting.dart';
 import 'package:flutter_sample/theme.dart';
 import 'package:flutter_sample/ui/select_bookshelf_container.dart';
@@ -136,8 +137,14 @@ class _MyHomePageState extends State<MyHomePage> {
       floatingActionButton: _shouldShowFAB
           ? FloatingActionButton(
               backgroundColor: themeData.accentColor,
-              onPressed: () {},
-              // tooltip: 'Increment',
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => SearchBookPage.newInstance(),
+                  ),
+                );
+              },
               child: new Icon(Icons.add),
             )
           : null, // This trailing comma makes auto-formatting nicer for build methods.
