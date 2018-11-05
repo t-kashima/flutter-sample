@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_sample/theme.dart';
+import 'package:flutter/services.dart';
 
 class SearchBookPage extends StatefulWidget {
   SearchBookPage({Key key}) : super(key: key);
@@ -13,6 +14,19 @@ class SearchBookPage extends StatefulWidget {
 }
 
 class _SearchBookPageState extends State<SearchBookPage> {
+  static const platform = const MethodChannel('samples.flutter.io/battery');
+
+  Future<Null> _getBatteryLevel() async {
+    String batteryLevel;
+    try {
+      final int result = await platform.invokeMethod('getBatteryLevel');
+      batteryLevel = 'Battery level at $result';
+    } on PlatformException catch (e) {
+      batteryLevel = "Failed to get battery level";
+    }
+    debugPrint(batteryLevel);
+  }
+
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
@@ -26,6 +40,7 @@ class _SearchBookPageState extends State<SearchBookPage> {
             label: "バーコードから登録",
             onPressed: () {
               debugPrint("onTap scan with barcode");
+              _getBatteryLevel();
             },
           ),
           buildBorder(),
